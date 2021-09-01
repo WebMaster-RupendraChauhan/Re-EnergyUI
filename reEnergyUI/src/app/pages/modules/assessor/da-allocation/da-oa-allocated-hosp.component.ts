@@ -38,6 +38,7 @@ export class DaOaAllocatedHospComponent implements OnInit {
   current_hospid = 0;
   mobileOtp: string = null;
   currentUser: any;
+  
 
   constructor(private router: Router, private formBuilderdataservc: FormBuilderDataShareService, private modalService: NgbModal, private adminService: AdminService, private assrService: AssessorService) {
 
@@ -51,7 +52,11 @@ export class DaOaAllocatedHospComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
+//#region rupendra
+bulkPrichase(addBulkpurchasesModel){
+  this.modalService.open(addBulkpurchasesModel, { size: 'lg' });
+}
+//#endregion rupendra
   getDropDownData() {
     this.assrService.getDaOaAllocatedHospDropdownList().subscribe(res => {
 

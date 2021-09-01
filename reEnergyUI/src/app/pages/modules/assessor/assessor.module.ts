@@ -11,7 +11,9 @@ import { DaOaAllocatedHospComponent } from './da-allocation/da-oa-allocated-hosp
 import { LaddaModule } from 'angular2-ladda';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { DaAllocatedHospComponent } from './da-allocations/da-allocated-hosp.component';
-
+import { MembershipComponent } from './membership/membership.component';
+import { PassesComponent } from './passes/passes.component';
+import { SharedModule } from '../shared.module';
 @NgModule({
   imports: [
     CommonModule,
@@ -22,9 +24,10 @@ import { DaAllocatedHospComponent } from './da-allocations/da-allocated-hosp.com
     FormsModule,
     HttpClientModule,
     LaddaModule,
-    NgxPaginationModule
+    NgxPaginationModule,
+    SharedModule
   ],
-  declarations: [AsrcalenderComponent, DaOaAllocatedHospComponent, DaAllocatedHospComponent],
+  declarations: [AsrcalenderComponent, DaOaAllocatedHospComponent, DaAllocatedHospComponent, MembershipComponent, PassesComponent],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthHttpInterceptor, multi: true }
   ]

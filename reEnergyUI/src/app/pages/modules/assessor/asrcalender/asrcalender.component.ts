@@ -21,9 +21,9 @@ import { Subject } from 'rxjs';
 
 
 export interface CalendarMonthViewBeforeRenderEvent {
-  header: WeekDay[];
-  body: MonthViewDay[];
-  period: ViewPeriod;
+  // header: WeekDay[];
+  // body: MonthViewDay[];
+  // period: ViewPeriod;
 }
 
 const colors: any = {
@@ -148,7 +148,15 @@ export class AsrcalenderComponent implements OnInit {
 
   hidden: boolean;
   selected: any;
-
+  //#region rupendra
+  today: Date;
+  maxDate: { year: number; month: number; day: number; };
+  skip: number = 0;
+  dummy_data=[
+    {membership_catgory:'Luxury'},
+    {membership_catgory:'Premium'}
+  ]
+  //#endregion rupendra
   model: NgbDateStruct;
   date: { year: number, month: number };
   @Input() fromDate: Date;
@@ -178,12 +186,21 @@ export class AsrcalenderComponent implements OnInit {
     this.pageLoad_new();
     // this.pageLoad();
     // //this._fetchData();
+
+    //#region rupendra
+    this.today = new Date();
+    this.maxDate = { year: new Date().getFullYear(), month: this.today.getUTCMonth() + 1, day: this.today.getUTCDate() };
+    //#endregion rupendra
   }
 
   ngAfterViewInit() {
 
   }
-
+  //#region rupendra
+  addMembership(AddmembershipModel){
+    this.modalService.open(AddmembershipModel, { size: 'lg' });
+  }
+  //#endregion rupendra
   isRange(date: NgbDate) {
     return date.equals(this.fromNGDate) || date.equals(this.toNGDate) || this.isInside(date) || this.isHovered(date);
   }
